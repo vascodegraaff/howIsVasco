@@ -14,7 +14,7 @@ func ConnectDatabase() {
     }
 
 		// Migrate the schema
-		db.AutoMigrate(&Book{})
+		db.AutoMigrate(&Mood{})
 
 		DB = db
 }

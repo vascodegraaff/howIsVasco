@@ -22,12 +22,11 @@ func main() {
 	r := gin.Default()
 
 	models.ConnectDatabase()
+	
+	r.POST("/mood", controllers.InputMood)
+	r.GET("/mood", controllers.GetMoods)
 
-	controllers.StartBot()
-
-
-	r.GET("/books", controllers.FindBooks)
-	r.POST("/books", controllers.CreateBook)
+	r.GET("/delete", controllers.DeleteMoods)
 	// Listen and Server in 0.0.0.0:8080
 	r.Run(":8080")
 }
