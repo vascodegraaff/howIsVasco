@@ -61,3 +61,37 @@
 2022-06-14 22:10:26.532 CEST [5018] ERROR:  operator does not exist: bigint ~~ record at character 32
 2022-06-14 22:10:26.532 CEST [5018] HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
 2022-06-14 22:10:26.532 CEST [5018] STATEMENT:  DELETE FROM "moods" WHERE Mood LIKE ($1,$2,$3,$4,$5)
+2022-07-01 10:33:56.745 CEST [14925] LOG:  starting PostgreSQL 14.0 on aarch64-apple-darwin20.6.0, compiled by Apple clang version 12.0.5 (clang-1205.0.22.9), 64-bit
+2022-07-01 10:33:56.748 CEST [14925] LOG:  listening on IPv6 address "::1", port 6776
+2022-07-01 10:33:56.748 CEST [14925] LOG:  listening on IPv4 address "127.0.0.1", port 6776
+2022-07-01 10:33:56.748 CEST [14925] LOG:  listening on Unix socket "/tmp/.s.PGSQL.6776"
+2022-07-01 10:33:56.752 CEST [14926] LOG:  database system was interrupted; last known up at 2022-06-14 22:35:52 CEST
+2022-07-01 10:33:56.791 CEST [14926] LOG:  database system was not properly shut down; automatic recovery in progress
+2022-07-01 10:33:56.793 CEST [14926] LOG:  redo starts at 0/177D0F8
+2022-07-01 10:33:56.793 CEST [14926] LOG:  invalid record length at 0/177D1E0: wanted 24, got 0
+2022-07-01 10:33:56.793 CEST [14926] LOG:  redo done at 0/177D1A8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2022-07-01 10:33:56.798 CEST [14925] LOG:  database system is ready to accept connections
+2022-07-02 09:42:57.675 CEST [37861] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 09:42:57.675 CEST [37861] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3),($4,$5,$6)
+2022-07-02 09:45:02.389 CEST [38162] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 09:45:02.389 CEST [38162] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3)
+2022-07-02 09:45:02.394 CEST [38162] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 09:45:02.394 CEST [38162] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3)
+2022-07-02 10:05:53.152 CEST [38353] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 10:05:53.152 CEST [38353] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3)
+2022-07-02 10:05:53.155 CEST [38353] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 10:05:53.155 CEST [38353] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3)
+2022-07-02 10:09:47.481 CEST [39174] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 10:09:47.481 CEST [39174] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3)
+2022-07-02 10:09:47.483 CEST [39174] ERROR:  relation "question_sets" does not exist at character 13
+2022-07-02 10:09:47.483 CEST [39174] STATEMENT:  INSERT INTO "question_sets" ("id","set_name","description") VALUES ($1,$2,$3)
+2022-07-02 14:34:15.975 CEST [14925] LOG:  received smart shutdown request
+2022-07-02 14:34:15.979 CEST [14925] LOG:  background worker "logical replication launcher" (PID 14932) exited with exit code 1
+2022-07-02 14:34:15.980 CEST [14927] LOG:  shutting down
+2022-07-02 14:34:16.010 CEST [14925] LOG:  database system is shut down
+2022-07-03 11:15:32.520 CEST [38860] LOG:  starting PostgreSQL 14.0 on aarch64-apple-darwin20.6.0, compiled by Apple clang version 12.0.5 (clang-1205.0.22.9), 64-bit
+2022-07-03 11:15:32.523 CEST [38860] LOG:  listening on IPv6 address "::1", port 6776
+2022-07-03 11:15:32.523 CEST [38860] LOG:  listening on IPv4 address "127.0.0.1", port 6776
+2022-07-03 11:15:32.523 CEST [38860] LOG:  listening on Unix socket "/tmp/.s.PGSQL.6776"
+2022-07-03 11:15:32.527 CEST [38861] LOG:  database system was shut down at 2022-07-02 14:34:15 CEST
+2022-07-03 11:15:32.530 CEST [38860] LOG:  database system is ready to accept connections
