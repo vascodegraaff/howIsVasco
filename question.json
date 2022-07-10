@@ -3,7 +3,7 @@
 		"set_id": 1,
 		"set_name": "during day",
 		"description": "track current mood",
-		"schedule": 1,
+		"schedule": "random",
 		"schedule_value": "4",
 		"questions": [
 			{
@@ -17,7 +17,7 @@
 		"set_id": 2,
 		"set_name": "morning",
 		"description": "Questions to ask at the start of the day",
-		"schedule": 0,
+		"schedule": "cron",
 		"schedule_value": "* * * * *",
 		"questions": [
 			{
@@ -71,7 +71,7 @@
 		"set_id": 3,
 		"set_name": "end of day",
 		"description": "reflection on the day",
-		"schedule": 0,
+		"schedule": "cron",
 		"schedule_value": "30 11 * * *",
 		"questions": [
 			{

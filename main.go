@@ -1,25 +1,15 @@
 package main
 
 import (
-	"log"
 	"vasco/controllers"
 	"vasco/models"
 	"sync"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"vasco/bot"
 )
 
-func loadEnv(){
-  err := godotenv.Load(".env")
-  if err != nil {
-    log.Fatalf("Error loading .env file")
-  }
-}
-
 func main() {
 
-	loadEnv()
 	r := gin.Default()
 
 	models.ConnectDatabase()

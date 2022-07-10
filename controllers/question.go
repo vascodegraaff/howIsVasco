@@ -47,7 +47,7 @@ func AddQuestionSet(c *gin.Context) {
 		models.DB.Create(&question_set[i])
 	}
 
-	// c.JSON(http.StatusOK, gin.H{"question_set": questionSet})
+	c.JSON(http.StatusOK, gin.H{"question_set": question_set})
 }
 
 func ClearQuestionSet(c *gin.Context) {

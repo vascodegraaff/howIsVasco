@@ -24,18 +24,6 @@ var moodKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 	),
 )
 
-var rangeKeyboard = tgbotapi.NewReplyKeyboard(
-	tgbotapi.NewKeyboardButtonRow(
-		tgbotapi.NewKeyboardButton("1"),
-		tgbotapi.NewKeyboardButton("2"),
-		tgbotapi.NewKeyboardButton("3"),
-	),
-	tgbotapi.NewKeyboardButtonRow(
-		tgbotapi.NewKeyboardButton("4"),
-		tgbotapi.NewKeyboardButton("5"),
-	),
-)
-
 // Send a message with the question and set a reply keyboard
 func SendMessage(bot *tgbotapi.BotAPI, question *models.Question) {
 	message := tgbotapi.NewMessage(5383565084, question.Question)
@@ -61,7 +49,7 @@ func SendMessage(bot *tgbotapi.BotAPI, question *models.Question) {
 }
 
 func SetJobs(bot *tgbotapi.BotAPI) {
-	file, err := ioutil.ReadFile("/Users/vasco/Projects/bot/question.json")
+	file, err := ioutil.ReadFile("/Users/vasco/Projects/vasco/question.json")
 	if err != nil {
 		panic("unable to read file")
 	}
@@ -86,8 +74,6 @@ func SetJobs(bot *tgbotapi.BotAPI) {
 					log.Printf("cron job executed")
 				})
 			case models.RANDOM:
-
-
 			}
 			log.Printf("question id: %v\n", question.ID)
 			log.Printf("question: %s\n", question.Question)

@@ -2,22 +2,22 @@ package models
 
 import (
 	"time"
-
 	"gorm.io/gorm"
 )
 
-type ReplyType int32
+type ReplyType string
 const (
-	RANGE ReplyType = 0
-	NUMBER ReplyType = 1
-	TEXT ReplyType = 2
-	YES_NO ReplyType = 3
+	RANGE ReplyType = "range"
+	NUMBER ReplyType = "number"
+	TEXT ReplyType = "text"
+	YES_NO ReplyType = "yes_no"
 )
 
-type ScheduleType int32
-const (
-	CRON ScheduleType = 0
-	RANDOM ScheduleType = 1
+
+type ScheduleType string
+var (
+	CRON ScheduleType = "cron"
+	RANDOM ScheduleType = "random"
 )
 
 type QuestionSet struct {
@@ -39,6 +39,7 @@ type Question struct {
 }
 
 type Answer struct {
+	gorm.Model
 	QuestionID 		int `json:"question_id"`
 	Answer 				string `json:"answer"` 
 	DateTime 			time.Time `json:"date_time"`
