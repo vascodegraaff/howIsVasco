@@ -14,7 +14,13 @@ func ConnectDatabase() {
     }
 
 		// Migrate the schema
-		db.AutoMigrate(&Mood{}, &QuestionSet{}, &QuestionItem{}, &Schedule{})
+		// db.DropTableIfExists(&QuestionSet{}, &Question{})
+		//db.Migrator().DropTable(&QuestionSet{}, &Question{})
+		
+		db.AutoMigrate(&Mood{}, &QuestionSet{}, &Question{}, &Answer{})
+		// db.AutoMigrate(&Mood{}, &Customer{}, &Contact{})
+		// db.Model(&Question{}).AddForeignKey("set_id", "question(set_id)", "CASCADE", "CASCADE")
 
+		//db.Model(&Contact{}).AddForeignKey("cust_id", "customers(cust_id)", "CASCADE", "CASCADE")
 		DB = db
 }

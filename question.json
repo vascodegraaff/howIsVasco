@@ -1,0 +1,94 @@
+[
+	{
+		"set_id": 1,
+		"set_name": "during day",
+		"description": "track current mood",
+		"schedule": 1,
+		"schedule_value": "4",
+		"questions": [
+			{
+				"question_id": 1,
+				"question": "what is your current mood?",
+				"reply_type": "range"
+			}
+		]
+	},
+	{
+		"set_id": 2,
+		"set_name": "morning",
+		"description": "Questions to ask at the start of the day",
+		"schedule": 0,
+		"schedule_value": "* * * * *",
+		"questions": [
+			{
+				"question_id": 2,
+				"question": "how many hours did you sleep?",
+				"reply_type": "number"
+			},
+			{
+				"question_id": 3,
+				"question": "What mood did you have at the start of the day?",
+				"reply_type": "number"
+			},
+			{
+				"question_id": 4,
+				"question": "What are you grateful for?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 4,
+				"question": "What are you grateful for?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 4,
+				"question": "What are you grateful for?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 5,
+				"question": "What would make today great?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 5,
+				"question": "What would make today great?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 5,
+				"question": "What would make today great?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 6,
+				"question": "Daily Affirmations",
+				"reply_type": "text"
+			}
+		]
+	},
+	{
+		"set_id": 3,
+		"set_name": "end of day",
+		"description": "reflection on the day",
+		"schedule": 0,
+		"schedule_value": "30 11 * * *",
+		"questions": [
+			{
+				"question_id": 7,
+				"question": "What amazing thing happen today?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 8,
+				"question": "how would i have made today even better?",
+				"reply_type": "text"
+			},
+			{
+				"question_id": 9,
+				"question": "What made you smile today?",
+				"reply_type": "text"
+			}
+		]
+	}
+]

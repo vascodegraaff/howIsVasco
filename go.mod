@@ -12,6 +12,7 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/joho/godotenv v1.4.0
 	github.com/jteeuwen/go-bindata v3.0.7+incompatible // indirect
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/schollz/progressbar v1.0.0 // indirect
 	github.com/tdewolff/minify/v2 v2.11.9 // indirect
 	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
