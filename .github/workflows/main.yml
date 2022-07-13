@@ -17,32 +17,26 @@ jobs:
     - name: Setup Go environment
       uses: actions/setup-go@v3.2.0
 
-
   deploy:
-    needs: [test]
+    needs: build
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout source code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2 
+      - name: Deploy in EC2
+        env:
+            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            HOSTNAME : ${{ secrets.HOSTNAME  }}
+            USER_NAME : ${{ secrets.USER_NAME  }}
+            
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          
+            #Now we have got the access of EC2 and we will start the deploy .
+            cd /home/ubuntu/vasco/howIsVasco &&
+            git checkout master &&
+            git fetch --all &&
+            git reset --hard origin/master &&
+            git pull origin master
 
-    - name: Generate deployment package
-      run: zip -r deploy.zip . -x '*.git*'
-
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v20
-      with:
-      
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
-
-
-        application_name: vasco
-        environment_name: Vasco-env
-        
-
-
-        version_label: 12348
-        region: "eu-west-1"
-        deployment_package: deploy.zip
