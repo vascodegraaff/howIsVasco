@@ -15,7 +15,8 @@ import (
 
 
 // Go through json of questions and construct the model in the database
-func AddQuestionSet(c *gin.Context) {
+// if the set id already exists, we update the values, otherwise we create a new set
+func UpdateQuestionSet(c *gin.Context) {
 	file, err := ioutil.ReadFile("/Users/vasco/Projects/vasco/question.json")
 	if err != nil {
 		panic("unable to read file")
@@ -27,24 +28,20 @@ func AddQuestionSet(c *gin.Context) {
 		log.Fatal("Error during Unmarshal(): ", err)
 	}
 
-	for i, set := range question_set {
-		log.Printf("%v", set.SetID)
-		log.Printf("%v", set.ID)
-		log.Printf("%v", set.Description)
-		log.Printf("%v", set.Schedule)
-		log.Printf("%v", set.ScheduleValue)
+	for _, set := range question_set {
+		json_set, _ := json.Marshal(set)
+		log.Printf("%s", json_set)
 		for _, question := range set.Questions {
-			// log.Printf("%v", question.QuestionSetID)
-			// values := map[string]int{"question":question}
-
-			json, _ := json.Marshal(question)
-			log.Printf("question: %v", string(json))
-			log.Printf("%v", question.QuestionID)
-			log.Printf("%v", question.Question)
-			log.Printf("%v", question.ReplyType)
-			// models.DB.Create(&question)
+			json_question, _ := json.Marshal(question)
+			log.Printf("%s", json_question)
+			// if(models.DB.Find(&models.Question{}, "id = ?", question.ID)!=nil) {
+				// models.DB.Model(&question).Where("id = ?", question.ID).Updates(question)
+			// } else {
+			models.DB.Create(&question)
+			// }
 		}
-		models.DB.Create(&question_set[i])
+		log.Printf("%s", json_set)
+		// models.DB.Create(&set)
 	}
 
 	c.JSON(http.StatusOK, gin.H{"question_set": question_set})
@@ -56,6 +53,10 @@ func ClearQuestionSet(c *gin.Context) {
 	for _, question_set := range question_sets {
 		models.DB.Delete(&question_set)
 	}
+	var questions []models.Question
+	for _, question := range questions {
+		models.DB.Delete(&question)
+	}
 	// models.DB.Where("1 = 1").Delete(&models.Question{})
 	// models.DB.Where("1 = 1").Delete(&models.QuestionSet{})
 	c.Data(http.StatusAccepted, "application/json", []byte("{\"message\": \"question_set deleted\"}"))
@@ -66,6 +67,12 @@ func GetQuestionSets(c *gin.Context) {
 	models.DB.Find(&questionSets)
 	c.JSON(http.StatusOK, gin.H{"questionSets": questionSets})
 
+}
+
+func GetAllQuestions(c *gin.Context) {
+	var questions []models.Question
+	models.DB.Find(&questions)
+	c.JSON(http.StatusOK, gin.H{"questions": questions})
 }
 
 func AnswerQuestion() {

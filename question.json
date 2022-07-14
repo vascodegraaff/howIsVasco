@@ -3,7 +3,7 @@
 		"set_id": 1,
 		"set_name": "during day",
 		"description": "track current mood",
-		"schedule": "random",
+		"schedule": "cron",
 		"schedule_value": "4",
 		"questions": [
 			{

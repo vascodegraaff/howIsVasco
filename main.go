@@ -5,7 +5,6 @@ import (
 	"vasco/models"
 	"sync"
 	"github.com/gin-gonic/gin"
-	"vasco/bot"
 )
 
 func main() {
@@ -20,8 +19,9 @@ func main() {
 	r.GET("/mood", controllers.GetMoods)
 
 	r.GET("/delete", controllers.ClearQuestionSet)
-	r.GET("/question", controllers.GetQuestionSets)
-	r.GET("/updateQuestions", controllers.AddQuestionSet)
+	r.GET("/questions", controllers.GetAllQuestions)
+	r.GET("/question_set", controllers.GetQuestionSets)
+	r.GET("/updateQuestions", controllers.UpdateQuestionSet)
 	// Listen and Server in 0.0.0.0:8080
 
 	wg := new(sync.WaitGroup)
@@ -33,7 +33,7 @@ func main() {
 
 	wg.Add(1)
 	go func() {
-		bot.StartBot()
+		controllers.StartBot()
 		wg.Done()
 	}()
 	wg.Wait()

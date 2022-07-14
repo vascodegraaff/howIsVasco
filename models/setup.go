@@ -14,11 +14,11 @@ func ConnectDatabase() {
     log.Fatalf("Error loading .env file")
   }
 	host := os.Getenv("HOST")
-	user := os.Getenv("USER")
+	user := os.Getenv("USERNAME")
 	password := os.Getenv("PASSWORD")
 	dbname := os.Getenv("DBNAME")
 	port := os.Getenv("DBPORT")
-	
+
 	dsn := "host="+ host+ " user="+user+" password="+password+" dbname="+dbname+" port="+port+" sslmode=disable TimeZone=Europe/Amsterdam"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
@@ -28,7 +28,7 @@ func ConnectDatabase() {
 
 	// Migrate the schema
 	// db.DropTableIfExists(&QuestionSet{}, &Question{})
-	//db.Migrator().DropTable(&QuestionSet{}, &Question{})
+	// db.Migrator().DropTable(&QuestionSet{}, &Question{})
 	
 	db.AutoMigrate(&Mood{}, &QuestionSet{}, &Question{}, &Answer{})
 	// db.AutoMigrate(&Mood{}, &Customer{}, &Contact{})

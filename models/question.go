@@ -21,9 +21,9 @@ var (
 )
 
 type QuestionSet struct {
-  gorm.Model
-	SetID uint `json:"set_id" gorm:"primaryKey"`
-	QuestionSetName string `json:"set_name"`
+  // gorm.Model
+	SetID uint `json:"set_id" gorm:"primaryKey;unique"`
+	QuestionSetName string `json:"set_name" gorm:"unique"`
 	Description string
 	Schedule ScheduleType
 	ScheduleValue string
@@ -31,10 +31,10 @@ type QuestionSet struct {
 }
 
 type Question struct {
-  gorm.Model
+  // gorm.Model
   QuestionSetID uint
-	QuestionID uint `json:"question_id" gorm:"primaryKey"`
-  Question string
+	QuestionID uint `json:"question_id" gorm:"primaryKey;unique"`
+  Question string `gorm:"unique"`
 	ReplyType ReplyType
 }
 
