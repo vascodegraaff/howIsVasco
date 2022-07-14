@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
@@ -16,16 +16,6 @@ jobs:
 
     - name: Setup Go environment
       uses: actions/setup-go@v3.2.0
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
+      
+    - run: go build && ./vasco
     
-    uses: easingthemes/ssh-deploy@main
-    env:
-        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY}}
-        SOURCE: "dist/"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
-        EXCLUDE: "/dist/, /node_modules/"
