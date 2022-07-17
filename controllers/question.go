@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"vasco/db"
 	// "fmt"
 	"encoding/json"
 	"vasco/models"
@@ -22,56 +23,45 @@ func UpdateQuestionSet(c *gin.Context) {
 		panic("unable to read file")
 	}
 	
-	var question_set []models.QuestionSet
-	_ = json.Unmarshal([]byte(file), &question_set)
+	var questions []models.Question
+	_ = json.Unmarshal([]byte(file), &questions)
 	if err != nil {
 		log.Fatal("Error during Unmarshal(): ", err)
 	}
 
-	for _, set := range question_set {
+	for _, set := range questions {
 		json_set, _ := json.Marshal(set)
 		log.Printf("%s", json_set)
-		for _, question := range set.Questions {
-			json_question, _ := json.Marshal(question)
-			log.Printf("%s", json_question)
-			// if(models.DB.Find(&models.Question{}, "id = ?", question.ID)!=nil) {
-				// models.DB.Model(&question).Where("id = ?", question.ID).Updates(question)
-			// } else {
-			models.DB.Create(&question)
-			// }
-		}
+		// for _, question := range set.Questions {
+		// 	json_question, _ := json.Marshal(question)
+		// 	log.Printf("%s", json_question)
+		// 	// if(models.DB.Find(&models.Question{}, "id = ?", question.ID)!=nil) {
+		// 		// models.DB.Model(&question).Where("id = ?", question.ID).Updates(question)
+		// 	// } else {
+		// 	models.DB.Create(&question)
+		// 	// }
+		// }
 		log.Printf("%s", json_set)
 		// models.DB.Create(&set)
 	}
 
-	c.JSON(http.StatusOK, gin.H{"question_set": question_set})
+	c.JSON(http.StatusOK, gin.H{"question_set": questions})
 }
 
 func ClearQuestionSet(c *gin.Context) {
-	var question_sets []models.QuestionSet
-	models.DB.Find(&question_sets)
-	for _, question_set := range question_sets {
-		models.DB.Delete(&question_set)
-	}
 	var questions []models.Question
 	for _, question := range questions {
-		models.DB.Delete(&question)
+		db.DB.Delete(&question)
 	}
 	// models.DB.Where("1 = 1").Delete(&models.Question{})
 	// models.DB.Where("1 = 1").Delete(&models.QuestionSet{})
 	c.Data(http.StatusAccepted, "application/json", []byte("{\"message\": \"question_set deleted\"}"))
 }
 
-func GetQuestionSets(c *gin.Context) {
-	var questionSets []models.QuestionSet
-	models.DB.Find(&questionSets)
-	c.JSON(http.StatusOK, gin.H{"questionSets": questionSets})
-
-}
 
 func GetAllQuestions(c *gin.Context) {
 	var questions []models.Question
-	models.DB.Find(&questions)
+	db.DB.Find(&questions)
 	c.JSON(http.StatusOK, gin.H{"questions": questions})
 }
 

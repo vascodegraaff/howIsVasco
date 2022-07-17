@@ -54,35 +54,25 @@ func SetJobs(bot *tgbotapi.BotAPI) {
 		panic("unable to read file")
 	}
 
-	questionSet := make([]models.QuestionSet,0)
-	_ = json.Unmarshal([]byte(file), &questionSet)
+	Questions := make([]models.Question,0)
+	_ = json.Unmarshal([]byte(file), &Questions)
 	if err != nil {
 		log.Fatal("Error during Unmarshal(): ", err)
 	}
 
-	// x,err := json.MarshalIndent(questionSet, "", "  ")
+	x, err := json.MarshalIndent(Questions, "", "  ")
 	if err != nil {
 		log.Fatal("Error during MarshalIndent(): ", err)
 	}
-	// log.Printf("%s", x)
+	log.Printf("%s", x)
 	c := cron.New()
 
-	for i, set := range questionSet {
-		// log.Printf("set_name: %s\n", set.QuestionSetName)
-		// log.Printf("description: %s\n", set.Description)
-		// log.Printf("schedule type: %v\n", set.Schedule)
-		for _, question := range set.Questions {
-			switch questionSet[i].Schedule {
-			case models.CRON:
-				c.AddFunc(questionSet[i].ScheduleValue, func() {
-					SendMessage(bot, question)
-					log.Printf("cron job executed")
-				})
-			case models.RANDOM:
-			}
-			// log.Printf("question id: %v\n", question.ID)
-			// log.Printf("question: %s\n", question.Question)
-			// log.Printf("reply type: %v\n", question.ReplyType)
+	for _, question := range Questions {
+		if question.Schedule == models.CRON {
+			c.AddFunc(question.ScheduleValue, func() {
+				log.Printf("CRON job: %s", question.ScheduleValue)
+				SendMessage(bot, &question)
+			})
 		}
 	}
 	c.Start()

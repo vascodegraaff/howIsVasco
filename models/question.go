@@ -20,21 +20,19 @@ var (
 	RANDOM ScheduleType = "random"
 )
 
-type QuestionSet struct {
-  // gorm.Model
-	SetID uint `json:"set_id" gorm:"primaryKey;unique"`
-	QuestionSetName string `json:"set_name" gorm:"unique"`
-	Description string
-	Schedule ScheduleType
-	ScheduleValue string
-  Questions []*Question `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;unique"`
-}
+// type QuestionSet struct {
+//   gorm.Model
+// 	SetID uint `json:"set_id" gorm:"primaryKey"`
+// 	// QuestionSetName string `json:"set_name" gorm:"unique"`
+// 	Description string
+// }
 
 type Question struct {
-  // gorm.Model
-  QuestionSetID uint
-	QuestionID uint `json:"question_id" gorm:"primaryKey;unique"`
-  Question string `gorm:"unique"`
+  gorm.Model
+	QuestionID uint `json:"question_id"` 
+  Question string 
+	Schedule ScheduleType
+	ScheduleValue string `json:"schedule_value"`
 	ReplyType ReplyType
 }
 

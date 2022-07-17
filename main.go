@@ -2,7 +2,7 @@ package main
 
 import (
 	"vasco/controllers"
-	"vasco/models"
+	"vasco/db"
 	"sync"
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +11,7 @@ func main() {
 
 	r := gin.Default()
 
-	models.ConnectDatabase()
+	db.ConnectDatabase()
 
 
 	
@@ -20,7 +20,6 @@ func main() {
 
 	r.GET("/delete", controllers.ClearQuestionSet)
 	r.GET("/questions", controllers.GetAllQuestions)
-	r.GET("/question_set", controllers.GetQuestionSets)
 	r.GET("/updateQuestions", controllers.UpdateQuestionSet)
 	// Listen and Server in 0.0.0.0:8080
 

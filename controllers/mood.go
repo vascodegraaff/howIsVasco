@@ -5,6 +5,7 @@ import (
     "github.com/gin-gonic/gin"
     "vasco/models"
     "time"
+    "vasco/db"
 
 )
 
@@ -21,21 +22,21 @@ func InputMood(c *gin.Context) {
 
     mood := models.Mood{Mood: input.Mood, DateTime: time.Now()}
 
-    models.DB.Create(&mood)
+    db.DB.Create(&mood)
 
     c.JSON(http.StatusOK, gin.H{"data": mood})
 }
 func GetMoods(c *gin.Context) {
     var moods []models.Mood
-    models.DB.Find(&moods)
+    db.DB.Find(&moods)
 
     c.JSON(http.StatusOK, gin.H{"data": moods})
 }
 
 func DeleteMoods(c *gin.Context) {
     var moods []models.Mood
-    models.DB.Find(&moods)
-    models.DB.Delete(moods)
+    db.DB.Find(&moods)
+    db.DB.Delete(moods)
 
     c.JSON(http.StatusOK,gin.H{"data": "deleted"})
     
