@@ -27,6 +27,13 @@ var (
 // 	Description string
 // }
 
+type QuestionSet struct {
+	Schedule ScheduleType
+	ScheduleValue string `json:"schedule_value"`
+	Questions []string `json:"questions"`
+}
+
+
 type Question struct {
   gorm.Model
 	QuestionID uint `json:"question_id"` 
