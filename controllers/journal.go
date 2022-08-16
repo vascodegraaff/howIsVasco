@@ -29,15 +29,13 @@ func GetJournalEntries(c *gin.Context) {
 func GetJournalEntriesByType(c *gin.Context, Type string) {
 	var journals []models.Journal
 	db.DB.Find(&journals, "type = ?", Type)
-
 	c.JSON(http.StatusOK, gin.H{"data": journals})
 }
+
 func DeleteAllJournals(c *gin.Context) {
 		var journals []models.Journal
 		db.DB.Find(&journals)
     db.DB.Delete(journals)
-
     c.JSON(http.StatusOK,gin.H{"data": "deleted"})
-    
 }
 

@@ -77,11 +77,11 @@ func SetJobs(bot *tgbotapi.BotAPI) {
 		log.Fatal("Error during Unmarshal(): ", err)
 	}
 
-	x, err := json.MarshalIndent(Questions, "", "  ")
+	// x, err := json.MarshalIndent(Questions, "", "  ")
 	if err != nil {
 		log.Fatal("Error during MarshalIndent(): ", err)
 	}
-	log.Printf("%s", x)
+	// log.Printf("%s", x)
 	c := cron.New()
 
 	if questionSet.Schedule == models.CRON {
