@@ -4,7 +4,8 @@ import "time"
 
 type Journal struct {
 	ID uint `json:"id" gorm:"primary_key"`
-	Title string `json:"title"`
-	dateTime time.Time `json:"dateTime"` 
+	Type string `json:"title"`
+	DateTime time.Time `json:"dateTime"` 
 	Text string `json:"text"`
 }
+
