@@ -24,29 +24,6 @@ var moodKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 	),
 )
 
-// Send a message with the question and set a reply keyboard
-// func SendMessage(bot *tgbotapi.BotAPI, question *models.Question) {
-// 	message := tgbotapi.NewMessage(5383565084, question.Question)
-// 	switch question.ReplyType {
-// 	case models.RANGE:
-// 		var replyKeyboard = tgbotapi.NewReplyKeyboard(
-// 			tgbotapi.NewKeyboardButtonRow(
-// 				tgbotapi.NewKeyboardButton("/r q_id:"+fmt.Sprintf("%v", question.QuestionID)+" - 1"),
-// 				tgbotapi.NewKeyboardButton("/r q_id:"+fmt.Sprintf("%v", question.QuestionID)+" - 2"),
-// 				tgbotapi.NewKeyboardButton("/r q_id:"+fmt.Sprintf("%v", question.QuestionID)+" - 3"),
-// 			),
-// 			tgbotapi.NewKeyboardButtonRow(
-// 				tgbotapi.NewKeyboardButton("/r q_id:"+fmt.Sprintf("%v", question.QuestionID)+" - 4"),
-// 				tgbotapi.NewKeyboardButton("/r q_id:"+fmt.Sprintf("%v", question.QuestionID)+" - 5"),
-// 			),
-// 		)
-// 		message.ReplyMarkup = replyKeyboard
-// 	}
-
-// 	bot.Send(message)
-// 	log.Printf("Message sent: " + question.Question)
-
-// }
 func SendMessage(bot *tgbotapi.BotAPI, question string) {
 	message := tgbotapi.NewMessage(5383565084, question)
 	message.ReplyMarkup = moodKeyboard
@@ -91,6 +68,5 @@ func SetJobs(bot *tgbotapi.BotAPI) {
 			}
 		})
 	}
-	
 	c.Start()
 }

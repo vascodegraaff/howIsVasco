@@ -11,6 +11,8 @@ require (
 	gorm.io/gorm v1.23.5
 )
 
+require github.com/and3rson/telemux/v2 v2.0.2 // indirect
+
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
