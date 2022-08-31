@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"time"
-	"vasco/db"
+	"db"
 	"vasco/models"
 	"github.com/gin-gonic/gin"
 )

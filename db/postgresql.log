@@ -716,3 +716,11 @@
 2022-07-17 21:16:00.001 GMT [4006] STATEMENT:  SELECT * FROM "questions" WHERE QuestionSetID = $1 AND "questions"."deleted_at" IS NULL
 2022-08-16 10:26:31.789 GMT [53328] ERROR:  relation "journals" does not exist at character 13
 2022-08-16 10:26:31.789 GMT [53328] STATEMENT:  INSERT INTO "journals" ("type","date_time","text") VALUES ($1,$2,$3) RETURNING "id"
+2022-08-20 08:10:26.829 GMT [57092] FATAL:  data directory "/Users/vascodegraaff/Projects/howIsVasco/bin/db" has invalid permissions
+2022-08-20 08:10:26.829 GMT [57092] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2022-08-20 21:23:06.546 GMT [58676] FATAL:  data directory "/Users/vascodegraaff/Projects/howIsVasco/bin/db" has invalid permissions
+2022-08-20 21:23:06.546 GMT [58676] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2022-08-20 21:23:46.907 GMT [58717] FATAL:  data directory "/Users/vascodegraaff/Projects/howIsVasco/bin/db" has invalid permissions
+2022-08-20 21:23:46.907 GMT [58717] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2022-08-24 22:05:05.488 GMT [21139] FATAL:  data directory "/Users/vascodegraaff/Projects/howIsVasco/bin/db" has invalid permissions
+2022-08-24 22:05:05.488 GMT [21139] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
