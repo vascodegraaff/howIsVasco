@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"time"
-	"db"
+    "vasco/util"
 	"vasco/models"
 	"github.com/gin-gonic/gin"
 )
@@ -19,7 +19,7 @@ func EnterJournalEntry(Type string, Text string) {
 	db.DB.Create(&journal)
 	log.Printf("Journal entry created: %v", journal)
 }
-			
+
 func GetJournalEntries(c *gin.Context) {
 	var journals []models.Journal
 	db.DB.Find(&journals)

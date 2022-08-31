@@ -5,7 +5,7 @@ import (
     "github.com/gin-gonic/gin"
     "vasco/models"
     "time"
-    "vasco/db"
+    "vasco/util"
 
 )
 

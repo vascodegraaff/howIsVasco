@@ -2,7 +2,7 @@ package main
 
 import (
 	"vasco/controllers"
-	"vasco/db"
+	"vasco/util"
 	"sync"
 	"github.com/gin-gonic/gin"
 )
