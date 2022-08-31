@@ -1,1 +1,0 @@
-/Applications/Postgres.app/Contents/Versions/14/bin/postgres "-D" "/Users/vasco/Projects/vasco/bin/db" "-p" "6776"
