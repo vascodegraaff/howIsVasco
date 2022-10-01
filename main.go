@@ -21,7 +21,7 @@ func main() {
 	r.GET("/delete", controllers.ClearQuestionSet)
 	r.GET("/questions", controllers.GetAllQuestions)
 	r.GET("/updateQuestions", controllers.UpdateQuestionSet)
-	
+
 	r.GET("/journal", controllers.GetJournalEntries)
 	// Listen and Server in 0.0.0.0:8080
 
